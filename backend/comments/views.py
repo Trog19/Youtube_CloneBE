@@ -1,3 +1,4 @@
+import pkg_resources
 from .models import Comment
 from .serializers import CommentSerializer
 from models import Reply
@@ -9,14 +10,14 @@ from django.shortcuts import get_object_or_404
 
 
 
-
+# one endpoint that gets all comments associated with one video id passed in through path
 
 
 @api_view(['GET', 'POST'])
-def song_list(request):
+def comment_list(request):
+    comment = get_object_or_404(Comment)
     if request.method == 'GET':
-        comment = Comment.objects.all()
-        serializer = CommentSerializer(song, many=True)
+        serializer = CommentSerializer(comment, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     elif request.method == 'POST':
@@ -29,16 +30,23 @@ def song_list(request):
 
 
 @api_view(['GET', 'PUT', 'DELETE'])
-def song_detail(request, pk):
-    song = get_object_or_404(Song, pk=pk)
+def comment_detail(request, pk):
+    comment = get_object_or_404(Comment, pk=pk)
     if request.method == 'GET':
-        serializer =SongSerializer(song)
+        serializer = CommentSerializer(comment)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     elif request.method == 'PUT':
-        serializer = SongSerializer(song, data=request.data)
+        serializer = CommentSerializer(comment, data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(serializer.data, status=status.HTTP_202_ACCEPTED)
     elif request.method == 'DELETE':
-        song.delete()
+        comment.delete()
         return Response(status=status.HTTP_404_NOT_FOUND)
+
+
+        
+
+@api_view(['GET'])
+def reply_detail(request, pk):
+    reply = 
