@@ -1,10 +1,10 @@
-import pkg_resources
 from .models import Comment
 from .serializers import CommentSerializer
 from .models import Reply
 from .serializers import ReplySerializer
-from rest_framework.decorators import api_view  
+from rest_framework.decorators import api_view, permission_classes  
 from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework import status
 from django.shortcuts import get_object_or_404
 
@@ -12,6 +12,7 @@ from django.shortcuts import get_object_or_404
 
 
 @api_view(['GET', 'POST'])
+@permission_classes([IsAuthenticated])
 def comment_list(request):
     video = get_object_or_404(Comment)
     if request.method == 'GET':
@@ -27,6 +28,7 @@ def comment_list(request):
 
 
 @api_view(['GET', 'PUT', 'DELETE'])
+@permission_classes([IsAuthenticated])
 def comment_detail(request, pk):
     comment = get_object_or_404(Comment, pk=pk)
     if request.method == 'GET':
@@ -43,6 +45,7 @@ def comment_detail(request, pk):
 
 
 @api_view(['GET'])
+@permission_classes([AllowAny])
 def get_video_comments(request, video_id):
     video_comments = Comment.objects.filter(video_id=video_id)
     serializer = CommentSerializer(video_comments, many=True)
