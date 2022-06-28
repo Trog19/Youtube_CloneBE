@@ -8,7 +8,7 @@ class CommentSerializer (serializers.ModelSerializer):
         model = Comment
         fields = ['user', 'video_id', 'text', 'likes', 'dislikes']
 
-class ReplySrializer(serializers.ModelSerializer):
+class ReplySerializer(serializers.ModelSerializer):
     class Meta:
         model = Reply
         fields = ['user', 'comments', 'text']
