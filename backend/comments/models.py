@@ -16,3 +16,8 @@ class Reply(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     comment = models.CharField(max_length=50)
     text = models.CharField(max_length=225) 
+
+
+
+
+    # AIzaSyCYpL8Ms12BQUCMlecVei-ZYjgb2Kx3Ov0
