@@ -1,6 +1,7 @@
 // General Imports
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
+import { googleApiKey } from "./keys";
 
 // Pages Imports
 import HomePage from "./pages/HomePage/HomePage";
@@ -13,6 +14,7 @@ import Footer from "./components/Footer/Footer";
 
 // Util Imports
 import PrivateRoute from "./utils/PrivateRoute";
+import VideoPage from "./components/VideoPage";
 
 function App() {
   return (
@@ -29,6 +31,14 @@ function App() {
         />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route 
+          path="/"
+          element={
+            <PrivateRoute>
+              <VideoPage/>
+            </PrivateRoute>
+          }
+        />
       </Routes>
       <Footer />
     </div>
