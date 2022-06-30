@@ -8,7 +8,7 @@ const VideoPage = (props) => {
  
     const fetchVideos =async()=>{
       try { 
-        let response = await axios.get("https://www.googleapis.com/youtube/v3/search?q=dogs&key=AIzaSyCYpL8Ms12BQUCMlecVei-ZYjgb2Kx3Ov0",) 
+        let response = await axios.get("https://www.googleapis.com/youtube/v3/search?q=dogs&key=AIzaSyCYpL8Ms12BQUCMlecVei-ZYjgb2Kx3Ov0") 
         setVideos(response.data);
         console.log(response.data) 
       }

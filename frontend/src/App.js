@@ -33,12 +33,11 @@ function App() {
             <PrivateRoute>
               <HomePage />
             </PrivateRoute>
-          }
-        />
+          }/>
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/video"element={<VideoPage/>}/>
-        <Route path= "/related" element={<RelatedVideosPage/>}/>
+        <Route path= "/relatedvideos" element={<RelatedVideosPage/>}/>
         <Route path= "/search" element={<SearchPage/>}/>
       </Routes>
       <Footer />
