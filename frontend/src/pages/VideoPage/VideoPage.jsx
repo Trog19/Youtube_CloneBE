@@ -11,12 +11,12 @@ const VideoPage = (props) => {
         let response = await axios.get("https://www.googleapis.com/youtube/v3/search?q=dogs&key=AIzaSyCYpL8Ms12BQUCMlecVei-ZYjgb2Kx3Ov0") 
         setVideos(response.data);
         console.log(response.data) 
+        return response.data
       }
      catch (error) {
         console.log(error.response.data);
       }
     }
-fetchVideos();
   }, []);
   
   

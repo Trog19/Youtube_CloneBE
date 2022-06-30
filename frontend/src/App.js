@@ -10,6 +10,7 @@ import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import VideoPage from "./pages/VideoPage/VideoPage";
 import RelatedVideosPage from "./pages/RelatedVideos/RelatedVideos";
 import SearchPage from "./pages/SearchPage/SearchPage"
+import SearchBar from "./components/SearchBar";
 
 // Component Imports
 import Navbar from "./components/NavBar/NavBar";

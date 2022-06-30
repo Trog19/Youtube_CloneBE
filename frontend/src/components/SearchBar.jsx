@@ -7,7 +7,7 @@ const SearchBar = (props)=>{
     function handleSubmit(event){
         event.preventDefault();
        
-        props.songSearch(videoSearch)
+        props.fetchVideos(videoSearch)
         console.log(videoSearch)
 
     }
@@ -17,7 +17,6 @@ return(
     <input type='text' value={videoSearch} onChange={(event)=> setVideoSearch(event.target.value)}/>
     <button type='submit'>Search</button>
 </div>
-<SearchBar videoSearch={videoSearch}/>
 </form>
 
     )

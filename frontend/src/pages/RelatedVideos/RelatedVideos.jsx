@@ -3,13 +3,13 @@ import axios from "axios";
 
 
 const RelatedVideosPage = (props) => {
-    const[videos, setVideos]= useState([])
+    const[relatedVideos, setRelatedVideos]= useState([])
     useEffect(() => {
  
     const fetchVideos =async()=>{
       try { 
-        let response = await axios.get("https://www.googleapis.com/youtube/v3/search?relatedToVideoId={video ID}&type=video&key=AIzaSyCYpL8Ms12BQUCMlecVei-ZYjgb2Kx3Ov0") 
-        setVideos(response.data);
+        let response = await axios.get{`https://www.googleapis.com/youtube/v3/search?q=${props.videoId}&key=AIzaSyCYpL8Ms12BQUCMlecVei-ZYjgb2Kx3Ov0`}
+        setRelatedVideos(response.data);
         console.log(response.data) 
       }
      catch (error) {

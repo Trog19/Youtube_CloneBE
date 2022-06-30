@@ -14,7 +14,11 @@ const Navbar = () => {
           <Link to="/" style={{ textDecoration: "none", color: "white" }}>
             <b>YOUTUBE CLONE</b>
           </Link>
+          <Link to='/video'>
+            <li>Video</li>
+          </Link>
         </li>
+        <Link to="/search"></Link>
         <li>
           {user ? (
             <button onClick={logoutUser}>Logout</button>
