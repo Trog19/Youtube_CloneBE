@@ -1,14 +1,16 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
+import VideoPlayer from "../../components/VideoPlayer";
 
 
-const RelatedVideosPage = (props) => {
+
+const RelatedVideos = ({videoId}) => {
     const[relatedVideos, setRelatedVideos]= useState([])
     useEffect(() => {
  
-    const fetchVideos =async()=>{
+    const fetchRelatedVideos =async(videoId)=>{
       try { 
-        let response = await axios.get{`https://www.googleapis.com/youtube/v3/search?q=${props.videoId}&key=AIzaSyCYpL8Ms12BQUCMlecVei-ZYjgb2Kx3Ov0`}
+        let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?relatedToVideoId=${videoId}&key=AIzaSyCYpL8Ms12BQUCMlecVei-ZYjgb2Kx3Ov0&part=snippet`)
         setRelatedVideos(response.data);
         console.log(response.data) 
       }
@@ -16,19 +18,23 @@ const RelatedVideosPage = (props) => {
         console.log(error.response.data);
       }
     }
-fetchVideos();
+fetchRelatedVideos(videoId);
   }, []);
   
   
   
   
   return (
-    <div> 
-        <h1>HAkdmnsdnfnsd</h1>
-        <RelatedVideosPage />
+    <div>
+      <h1>Related Videos</h1>
+      {relatedVideos.map((element,index) =>{
+        if (element.snippet){
+          return <p>{element.snippet.title}</p>
+        }
+      })}
     </div>
   
   );
 };
 
-export default RelatedVideosPage;
+export default RelatedVideos      ;
