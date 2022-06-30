@@ -4,12 +4,12 @@ import SearchBar from "../../components/SearchBar";
 
 
 const SearchPage = (props) => {
-    const [search, setSearch] = useState("")
+    const [videoSearch, setVideoSearch] = useState("")
 
     const fetchVideos =async()=>{
         try { 
-          let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?relatedToVideoId=${search}&type=video&key=AIzaSyCYpL8Ms12BQUCMlecVei-ZYjgb2Kx3Ov0`) 
-          setVideos(response.data);
+          let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?relatedToVideoId=${videoSearch}&type=video&key=AIzaSyCYpL8Ms12BQUCMlecVei-ZYjgb2Kx3Ov0`) 
+          setVideoSearch(response.data);
           console.log(response.data) 
         }
        catch (error) {
@@ -21,11 +21,15 @@ const SearchPage = (props) => {
     function handleSubmit(event){
         event.preventDefault();
        
-        props.videoSearch(search)
-        console.log(search)
+        props.videoSearch(videoSearch)
+        console.log(videoSearch)
     }
     return ( 
-    SearchBar
+        <div>
+        <h1>SearchBar</h1>
+        <SearchBar/>
+       </div>
+
      );
 }
  
