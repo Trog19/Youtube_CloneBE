@@ -28,9 +28,10 @@ fetchRelatedVideos(videoId);
     <div>
       <h1>Related Videos</h1>
       {relatedVideos.map((element,index) =>{
-        if (element.snippet){
+        if (element.id){
           return <p>{element.snippet.title}</p>
         }
+
       })}
     </div>
   
